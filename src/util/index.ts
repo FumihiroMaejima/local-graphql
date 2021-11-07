@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { performance } = require('perf_hooks')
-// Detail https://qiita.com/hayashi-ay/items/5e26f936a5c4dfbeb645
+// NOTICE
+//Node.jsでPerformation API(performanceオブジェクト)を使用する為には pref_hookモジュールをインポートする必要がある。
 
 /**
  * check method performance
