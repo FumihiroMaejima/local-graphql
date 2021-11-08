@@ -23,6 +23,20 @@ $ yarn add graphql express express-graphql
 $ yarn add --dev  @types/express
 ```
 
+## ソースのビルドのGraphiQLの実行
+
+```shell-session
+$ yarn build
+$ yarn dev
+```
+
+## クエリの実行
+```graphql
+{
+  message
+}
+```
+
 
 ## データの永続化の為にローカルに`volume`を作成する
 
