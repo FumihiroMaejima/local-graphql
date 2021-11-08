@@ -1,15 +1,28 @@
 # Local GraphQL Server
 
-ローカルでGraphQLサーバーを構築する為の手順書
+ローカルで`node.js`+`express`のGraphQLサーバーを構築する為の手順書
 
 # 構成
 
 | 名前 | バージョン |
 | :--- | :---: |
+| npm | 6.14.15 |
+| node | 6.14.15 |
+| yarn | 1.22.7 |
+| TypeScript | 4.4.4 |
 | MySQL | 8.0 |
 
 ---
 # ローカル環境の構築(Mac)
+
+
+## パッケージのインストール
+
+```shell-session
+$ yarn add graphql express express-graphql
+$ yarn add --dev  @types/express
+```
+
 
 ## データの永続化の為にローカルに`volume`を作成する
 
