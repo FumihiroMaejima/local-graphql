@@ -20,7 +20,7 @@
 
 ```shell-session
 $ yarn add graphql express express-graphql
-$ yarn add --dev  @types/express
+$ yarn add --dev  @types/express ts-node
 ```
 
 ## ソースのビルドのGraphiQLの実行
@@ -28,6 +28,32 @@ $ yarn add --dev  @types/express
 ```shell-session
 $ yarn build
 $ yarn dev
+```
+
+## devサーバーの実行はts-nodeで
+
+```shell-session
+$ yarn dev
+```
+
+2021/11/08 現在、下記のコマンド指定では下記の様なエラーが発生する。
+
+`Unknown file extension ".ts"`
+
+```json
+"scripts": {
+  "dev": "ts-node src/index.ts",
+}
+```
+
+理由は`type`の設定が`module`になっている為、`ESModules`が有効になっている為。
+
+`ts-node/esm`を指定する事で実行する事が出来る。
+
+```json
+"scripts": {
+  "dev": "node --loader ts-node/esm src/index.ts",
+}
 ```
 
 ## クエリの実行
