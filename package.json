@@ -6,7 +6,7 @@
     "scripts": {
         "build": "tsc",
         "watch": "tsc -w",
-        "dev": "node --loader ts-node/esm src/index.ts",
+        "dev": "node --experimental-specifier-resolution=node --loader ts-node/esm src/index.ts",
         "lint": "eslint --ext .ts,.js,.tsx,.jsx --ignore-path .gitignore . --fix",
         "lint:css": "stylelint src/**/*.scss",
         "test:unit": "jest --config jest.config.js"
