@@ -2,7 +2,7 @@
 import express from 'express'
 import { graphqlHTTP } from 'express-graphql'
 import { buildSchema } from 'graphql'
-import { CoursesDataType, coursesData } from '../data/sample'
+import { CoursesDataType, coursesData } from '../data/graphi'
 
 // GraphQL schema
 const schema = buildSchema(`
