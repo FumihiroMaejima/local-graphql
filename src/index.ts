@@ -34,7 +34,7 @@ const coursesData: CoursesDataType[] = [
     title: 'Test1',
     author: 'Test Name1',
     description: 'test description1.',
-    topic: 'Test Topic1',
+    topic: 'Topic1',
     url: 'https://picsum.photos/id/237/200/300',
   },
   {
@@ -42,7 +42,7 @@ const coursesData: CoursesDataType[] = [
     title: 'Test2',
     author: 'Test Name2',
     description: 'test description2, test12345!',
-    topic: 'Test Topic2',
+    topic: 'Topic2',
     url: 'https://picsum.photos/id/237/200/300',
   },
   {
@@ -50,7 +50,7 @@ const coursesData: CoursesDataType[] = [
     title: 'Test3',
     author: 'Test Name3',
     description: 'test description3, test12345, abcdefg!.',
-    topic: 'Test Topic3',
+    topic: 'Topic2',
     url: 'https://picsum.photos/id/237/200/300',
   },
 ]
@@ -79,8 +79,10 @@ const getCourses = (course: CoursesDataType) => {
   }
 }
 
-// resolver
-const resolver = {
+// root
+// APIエンドポイントごとにリゾルバ関数を提供します
+// 特定のフィールドのデータを返すメソッドであり、実際のデータ操作を行う
+const root = {
   course: getCourse,
   courses: getCourses,
 }
@@ -90,7 +92,7 @@ app.use(
   '/graphql',
   graphqlHTTP({
     schema: schema,
-    rootValue: resolver,
+    rootValue: root,
     graphiql: true,
   })
 )

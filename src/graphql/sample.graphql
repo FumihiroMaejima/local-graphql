@@ -1,0 +1,13 @@
+# 拡張子は.graphqlか.gql
+
+# textという名前のqueryでTextというオブジェクトを取得すると言う定義
+
+type Query {
+    text: Text
+}
+
+# String型のtextDataと言うプロパティを持つオブジェクト
+type Text {
+    textData: String
+}
+
