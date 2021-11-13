@@ -19,11 +19,11 @@
 ## パッケージのインストール
 
 ```shell-session
-$ yarn add graphql express express-graphql
-$ yarn add --dev  @types/express ts-node
+$ yarn add graphql express express-graphql apollo-server-express
+$ yarn add --dev @types/express ts-node
 ```
 
-## ソースのビルドのGraphiQLの実行
+## ソースのビルドとサーバーの起動
 
 ```shell-session
 $ yarn build
@@ -62,6 +62,34 @@ $ yarn dev
   message
 }
 ```
+
+---
+
+## Apollo Server(apollo-server-express)の実行
+
+下記のscriptを実行する事でapolloのサーバーを起動する。
+
+```shell-session
+$ yarn dev
+```
+
+サーバーを起動すると、　`https://studio.apollographql.com/sandbox/explorer`にリダイレクトする。
+
+外部サイトのサンドボックス上からローカルのサーバーにGUIでリクエストを送る事になる。
+
+---
+
+## GraphiQL(express-graphql)の実行
+
+下記のscriptを実行する事でGraphiqlのサーバーを起動する。
+
+```shell-session
+$ yarn graphi
+```
+
+GU I上で`query`と`query variables`を記載してレスポンスを取得出来る。
+
+---
 
 
 ## データの永続化の為にローカルに`volume`を作成する
