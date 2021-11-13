@@ -1,8 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import express, { Express } from 'express'
-import { ApolloServer, gql, ExpressContext } from 'apollo-server-express'
+import {
+  ApolloServer,
+  gql,
+  ApolloServerExpressConfig,
+} from 'apollo-server-express'
 
-let server: ApolloServer<ExpressContext>
+let server: ApolloServer<ApolloServerExpressConfig>
 let app: Express
 
 // GraphQL schema
@@ -12,7 +16,7 @@ const typeDefs = gql`
   }
 `
 
-// Provide resolver functions for your schema fields
+// resolver functions for schema fields
 const resolvers = {
   Query: {
     hello: () => 'Hello world!',
@@ -20,7 +24,7 @@ const resolvers = {
 }
 
 /**
- * start apollo server.
+ * start apollo server & express applictaion.
  * @param {}
  * @return {Promise<void>}
  */
@@ -28,14 +32,16 @@ const startServe = async (): Promise<void> => {
   // create Apollo server
   server = new ApolloServer({ typeDefs, resolvers })
 
-  // Create an express server and a GraphQL endpoint
-  // const app = express()
+  // Create an express application
   app = express()
-  // Apollo server Start!
+
+  // Start Apollo Server
   await server.start()
 
+  // apply express to apollo as middleware
   server.applyMiddleware({ app })
 
+  // listen for http connection
   app.listen(4000, () =>
     console.log(
       `Express Apollo GraphQL Server Now Running On localhost:4000${server.graphqlPath}`
@@ -43,4 +49,5 @@ const startServe = async (): Promise<void> => {
   )
 }
 
+// run method
 startServe()
