@@ -6,9 +6,6 @@ import {
   ApolloServerExpressConfig,
 } from 'apollo-server-express'
 
-let server: ApolloServer<ApolloServerExpressConfig>
-let app: Express
-
 // GraphQL schema
 const typeDefs = gql`
   type Query {
@@ -28,12 +25,15 @@ const resolvers = {
  * @param {}
  * @return {Promise<void>}
  */
-const startServe = async (): Promise<void> => {
+const startServer = async (): Promise<void> => {
   // create Apollo server
-  server = new ApolloServer({ typeDefs, resolvers })
+  const server: ApolloServer<ApolloServerExpressConfig> = new ApolloServer({
+    typeDefs,
+    resolvers,
+  })
 
-  // Create an express application
-  app = express()
+  // Create express application
+  const app: Express = express()
 
   // Start Apollo Server
   await server.start()
@@ -44,10 +44,10 @@ const startServe = async (): Promise<void> => {
   // listen for http connection
   app.listen(4000, () =>
     console.log(
-      `Express Apollo GraphQL Server Now Running On localhost:4000${server.graphqlPath}`
+      `Express Apollo GraphQL Server Now Running On localhost:4000${server.graphqlPath} \n Check sandbox.`
     )
   )
 }
 
-// run method
-startServe()
+// main method
+startServer()
