@@ -51,3 +51,23 @@ const startServer = async (): Promise<void> => {
 
 // main method
 startServer()
+
+/**
+ * sample query.
+ */
+/*
+{
+  hello
+}
+*/
+
+/**
+ * sample response.
+ */
+/*
+{
+  "data": {
+    "hello": "Hello world!"
+  }
+}
+*/
