@@ -5,7 +5,7 @@ import {
   gql,
   ApolloServerExpressConfig,
 } from 'apollo-server-express'
-import { usersData, UserType } from './data/apollo'
+import { usersData, UserType } from '../../data/apollo'
 
 // GraphQL schema
 const typeDefs = gql`
@@ -33,6 +33,9 @@ const userResolver = (
 ): UserType[] => {
   let result = usersData
   const limit = args.limit || 0
+
+  console.log('parent: ' + JSON.stringify(parent, null, 2))
+  console.log('test: ' + JSON.stringify(args, null, 2))
 
   if (limit > 0) {
     result = result.slice(0, limit)
