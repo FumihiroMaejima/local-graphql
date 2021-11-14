@@ -5,7 +5,7 @@ import {
   gql,
   ApolloServerExpressConfig,
 } from 'apollo-server-express'
-import { usersData } from './data/apollo'
+import { usersData } from '../../data/apollo'
 
 // GraphQL schema
 const typeDefs = gql`
