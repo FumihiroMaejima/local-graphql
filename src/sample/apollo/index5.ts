@@ -30,8 +30,9 @@ export const userResolver = (
   const isSort = args.ageSort || undefined
 
   console.log('parent: ' + JSON.stringify(parent, null, 2))
-  console.log('test: ' + JSON.stringify(args, null, 2))
+  console.log('args: ' + JSON.stringify(args, null, 2))
 
+  // sort
   if (isSort) {
     const operation = isSort === 'asc' ? 1 : -1
     const sortKey = 'age'
@@ -43,6 +44,7 @@ export const userResolver = (
     })
   }
 
+  // limit
   if (limit > 0) {
     result = result.slice(0, limit)
   }
