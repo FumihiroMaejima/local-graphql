@@ -113,7 +113,6 @@ startServer()
 }
 */
 
-
 /**
  * sample query2
  */
@@ -155,4 +154,3 @@ query userQuery($limit: Int!) {
   }
 }
 */
-
