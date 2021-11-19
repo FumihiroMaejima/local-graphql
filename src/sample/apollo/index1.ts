@@ -1,7 +1,24 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import express, { Express } from 'express'
-import { ApolloServer, ApolloServerExpressConfig } from 'apollo-server-express'
-import { typeDefs, resolvers } from './sample/apollo/index5'
+import {
+  ApolloServer,
+  gql,
+  ApolloServerExpressConfig,
+} from 'apollo-server-express'
+
+// GraphQL schema
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`
+
+// resolver functions for schema fields
+const resolvers = {
+  Query: {
+    hello: () => 'Hello world!',
+  },
+}
 
 /**
  * start apollo server & express applictaion.
@@ -34,3 +51,23 @@ const startServer = async (): Promise<void> => {
 
 // main method
 startServer()
+
+/**
+ * sample query.
+ */
+/*
+{
+  hello
+}
+*/
+
+/**
+ * sample response.
+ */
+/*
+{
+  "data": {
+    "hello": "Hello world!"
+  }
+}
+*/
